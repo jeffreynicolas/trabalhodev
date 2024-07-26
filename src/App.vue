@@ -2,11 +2,11 @@
 import { ref } from 'vue';
 import infocomponent from './components/info.vue';
 import estadocomponent from './components/estados.vue'
+import shobcomponent from './components/Shob.vue'
 
     let bio = ref("")
     const senha = ref('senha');
     const Csenha = ref('Csenha');
-    const SHob = ref([]);
     const SLing = ref([]);
 
     const estados = ref([
@@ -88,16 +88,9 @@ import estadocomponent from './components/estados.vue'
 <template>
   <form @submit.prevent="enviar">
 <infocomponent :senha="senha" :Csenha="Csenha"/>  
-<estadocomponent :estados="estados"/>
+<estadocomponent :estado="estados"/>
+<shobcomponent :SHob="Shob"/>
 
-    <div class="hobs">
-      <label>Qual seu hob</label>
-      <div v-for="(hob, index) in hobs" :key="index">
-        <input type="checkbox" v-model="SHob" :value="hob.id" :id="hob.id" />
-        <label :for="hob.id">{{ hob.name }}</label>
-      </div>
-      <span> {{ SHob }} </span>
-    </div>
 
     <div class="ling">
       <label>Quais as linguagens que voce conhece</label>
@@ -124,17 +117,7 @@ import estadocomponent from './components/estados.vue'
 
 
 
-.hobs {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  border: 1px solid #555151;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #beb5b5;
-  color: #000000;
-}
+
 
 .ling {
   display: flex;
